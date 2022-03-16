@@ -24,6 +24,8 @@ public class App {
 
         Connection conn = DriverManager.getConnection("jdbc:h2:mem:test;INIT=runscript from 'classpath:schema.sql'", "sa", "");
         server.addServlet("","favPlayerServlet", new FavPlayerServlet(conn)).addMapping("/Player");
+        server.addServlet("","UpcomingEventServlet", new UpcomingEventServlet(conn)).addMapping("/Upcoming");
+
         try {
             server.start();
         } catch (LifecycleException e) {

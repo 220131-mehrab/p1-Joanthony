@@ -9,7 +9,7 @@ CREATE TABLE "Upcoming" (
     "EventID" INT NOT NULL
     "City" TEXT
     "State" TEXT
-    "Event_Date" date /*format YYYY-MM-DD*/
+    "EventDate" date --format YYYY-MM-DD
 
     CONSTRAINT "PK_Upcoming" PRIMARY KEY ("EventID")
     CONSTRAINT "FK_EventPlayerID" FOREIGN KEY ("PlayerID") references "Favorite_Player" ("PlayerID")
