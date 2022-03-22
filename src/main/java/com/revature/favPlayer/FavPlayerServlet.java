@@ -1,4 +1,4 @@
-package com.revature.favplayer;
+package com.revature.favPlayer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.ServletException;
@@ -7,25 +7,21 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FavPlayerServlet extends HttpServlet {
     private Connection conn;
 
-    public FavPlayerServlet(Connection conn) {
-        this.conn = conn;
-    }
+
+    public FavPlayerServlet(Connection conn) {this.conn = conn;}
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Player> favorite_player = new ArrayList<>();
         try {
-            ResultSet rs = this.conn.prepareStatement("select * from Player").executeQuery();
+            ResultSet rs = this.conn.prepareStatement("select * from favorite_player").executeQuery();
             while (rs.next()) {
                 favorite_player.add(new Player(rs.getInt("playerID"),rs.getString("playerName"), rs.getString("sport"),rs.getInt("number")));
             }
@@ -45,7 +41,7 @@ public class FavPlayerServlet extends HttpServlet {
         ObjectMapper mapper = new ObjectMapper();
         Player newPlayer = mapper.readValue(req.getInputStream(), Player.class);
         try {
-            PreparedStatement stmt = conn.prepareStatement("insert into Player values (?,?)");
+            PreparedStatement stmt = conn.prepareStatement("insert into favorite_player values (?,?)");
             stmt.setInt(1, newPlayer.getPlayerID());
             stmt.setString(2, newPlayer.getPlayerName());
             stmt.setString(3,newPlayer.getSport());

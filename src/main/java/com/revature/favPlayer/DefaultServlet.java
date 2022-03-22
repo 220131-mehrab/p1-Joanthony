@@ -1,4 +1,4 @@
-package com.revature.favplayer;
+package com.revature.favPlayer;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;

@@ -1,6 +1,4 @@
-package com.revature.favplayer;
-
-import java.net.IDN;
+package com.revature.favPlayer;
 
 public class Player {
     private Integer playerID;

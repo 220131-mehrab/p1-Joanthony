@@ -1,4 +1,4 @@
-package com.revature.favplayer;
+package com.revature.favPlayer;
 
 public class Upcoming {
     private Integer eventID;
